@@ -10,6 +10,7 @@ class TextFormFieldAuth extends StatelessWidget {
     this.prefixIcon,
     this.onTap,
     this.flag,
+    required this.isLast,
   });
   final String title;
   final bool isPassword;
@@ -17,6 +18,7 @@ class TextFormFieldAuth extends StatelessWidget {
   final Icon? prefixIcon;
   final Function()? onTap;
   final bool? flag;
+  final bool isLast;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,16 @@ class TextFormFieldAuth extends StatelessWidget {
           height: MediaQuery.of(context).size.height / 160,
         ),
         TextFormField(
+          validator: (value) {
+            if (value!.isEmpty) {
+              if (isPassword == true) {
+                return "الرجاء ادخال البريد الالكترونى";
+              } else {
+                return "الرجاء ادخال كلمة المرور";
+              }
+            }
+          },
+          textInputAction: isLast ? TextInputAction.done : TextInputAction.next,
           cursorColor: Colors.black,
           textDirection: TextDirection.rtl,
           obscureText: flag == true ? true : false,

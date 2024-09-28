@@ -31,113 +31,123 @@ class _LoginPageState extends State<LoginPage> {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: Scaffold(
-        body: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width / 80,
-          ),
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.white,
-          child: ListView(
-            children: [
-              Column(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 6,
-                  ),
-                  Text(
-                    "تسجيل الدخول",
-                    style: TextStyle(
-                      fontFamily: "title",
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 10,
-                  ),
-                  TextFormFieldAuth(
-                    title: "البريد الاكترونى",
-                    isPassword: false,
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 30,
-                  ),
-                  BlocBuilder<LoginCubit, LoginState>(
-                    builder: (context, state) {
-                      return TextFormFieldAuth(
-                        flag: context.read<LoginCubit>().passFlag,
-                        onTap: () {
-                          context.read<LoginCubit>().showAndHide();
-                        },
-                        title: "كلمة السر",
-                        isPassword: true,
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 160,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "هل نسيت كلمة المرور ؟",
-                      style: TextStyle(
-                        fontFamily: "title",
-                        color: MyColors.myPurple,
-                        fontSize: 22,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 20,
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height / 15,
-                    width: MediaQuery.of(context).size.width / 2,
-                    decoration: BoxDecoration(
-                      color: MyColors.myPurple,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "الدخول",
-                        style: TextStyle(
-                          fontFamily: "title",
-                          fontSize: 25,
-                          color: Colors.white,
+        body: BlocBuilder<LoginCubit, LoginState>(
+          builder: (context, state) {
+            return Form(
+              key: context.read<LoginCubit>().globalKey,
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width / 80,
+                ),
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.white,
+                child: ListView(
+                  children: [
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 6,
                         ),
-                      ),
+                        Text(
+                          "تسجيل الدخول",
+                          style: TextStyle(
+                            fontFamily: "title",
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 10,
+                        ),
+                        TextFormFieldAuth(
+                          title: "البريد الاكترونى",
+                          isPassword: false,
+                          isLast: false,
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 30,
+                        ),
+                        TextFormFieldAuth(
+                          flag: context.read<LoginCubit>().passFlag,
+                          onTap: () {
+                            context.read<LoginCubit>().showAndHide();
+                          },
+                          title: "كلمة السر",
+                          isPassword: true,
+                          isLast: true,
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 160,
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            "هل نسيت كلمة المرور ؟",
+                            style: TextStyle(
+                              fontFamily: "title",
+                              color: MyColors.myPurple,
+                              fontSize: 22,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 20,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            context.read<LoginCubit>().goToHome();
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height / 15,
+                            width: MediaQuery.of(context).size.width / 2,
+                            decoration: BoxDecoration(
+                              color: MyColors.myPurple,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "الدخول",
+                                style: TextStyle(
+                                  fontFamily: "title",
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 160,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "انشاء حساب جديد",
+                              style: TextStyle(
+                                fontFamily: "title",
+                                fontSize: 18,
+                                color: MyColors.myDeepGrey,
+                              ),
+                            ),
+                            Text(
+                              "  لسه مسجل؟",
+                              style: TextStyle(
+                                fontFamily: "subtitle2",
+                                fontSize: 18,
+                                color: MyColors.myDeepGrey,
+                              ),
+                            )
+                          ],
+                        )
+                      ],
                     ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 160,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "انشاء حساب جديد",
-                        style: TextStyle(
-                          fontFamily: "title",
-                          fontSize: 18,
-                          color: MyColors.myDeepGrey,
-                        ),
-                      ),
-                      Text(
-                        "  لسه مسجل؟",
-                        style: TextStyle(
-                          fontFamily: "subtitle2",
-                          fontSize: 18,
-                          color: MyColors.myDeepGrey,
-                        ),
-                      )
-                    ],
-                  )
-                ],
+                  ],
+                ),
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
