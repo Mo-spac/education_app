@@ -5,12 +5,18 @@ class TextFormFieldAuth extends StatelessWidget {
   const TextFormFieldAuth({
     super.key,
     required this.title,
+    // required this.type,
     required this.isPassword,
     this.prefixIcon,
+    this.onTap,
+    this.flag,
   });
   final String title;
   final bool isPassword;
+  // final String type;
   final Icon? prefixIcon;
+  final Function()? onTap;
+  final bool? flag;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +41,20 @@ class TextFormFieldAuth extends StatelessWidget {
         TextFormField(
           cursorColor: Colors.black,
           textDirection: TextDirection.rtl,
-          obscureText: isPassword,
+          obscureText: flag == true ? true : false,
           decoration: InputDecoration(
             filled: true,
-            prefixIcon: prefixIcon,
+            prefixIcon: isPassword
+                ? GestureDetector(
+                    onTap: onTap,
+                    child: Icon(
+                      flag == true
+                          ? Icons.remove_red_eye_outlined
+                          : Icons.visibility_off_outlined,
+                      color: MyColors.myPurple,
+                    ),
+                  )
+                : SizedBox(),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Colors.white),
