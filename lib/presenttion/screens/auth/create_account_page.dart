@@ -55,43 +55,44 @@ class CreateAccountPage extends StatelessWidget {
               ),
               Expanded(
                 child: PageView.builder(
-                  itemBuilder: (context, index) => SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height / 40,
+                  itemBuilder: (context, index) => ListView(
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 40,
+                      ),
+                      Text(
+                        "الخطوة ${index + 1}",
+                        style: TextStyle(
+                          fontFamily: "title",
+                          fontSize: 20,
+                          color: MyColors.myPurple,
                         ),
-                        Text(
-                          "الخطوة ${index + 1}",
-                          style: TextStyle(
-                            fontFamily: "title",
-                            fontSize: 20,
-                            color: MyColors.myPurple,
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height / 40,
-                        ),
-                        createAccountTextFielde[index],
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height / 40,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            if (index != 0)
-                              ButtonAuth(
-                                text: "السابق",
-                                haveBorder: true,
-                              ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 40,
+                      ),
+                      createAccountTextFielde[index],
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 40,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          if (index != 0)
                             ButtonAuth(
-                              text: (index == 3) ? "تسجيل" : "التالى",
-                              haveBorder: false,
+                              text: "السابق",
+                              haveBorder: true,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ButtonAuth(
+                            text: (index == 3) ? "تسجيل" : "التالى",
+                            haveBorder: false,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 20,
+                      ),
+                    ],
                   ),
                   itemCount: 4,
                 ),

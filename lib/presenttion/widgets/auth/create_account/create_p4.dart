@@ -1,5 +1,9 @@
+import 'package:education_app/constens/my_colors.dart';
+import 'package:education_app/constens/my_text.dart';
+import 'package:education_app/presenttion/widgets/auth/create_account/condition_container.dart';
 import 'package:education_app/presenttion/widgets/auth/text_form_field_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class CreateP4 extends StatelessWidget {
   const CreateP4({super.key});
@@ -8,72 +12,49 @@ class CreateP4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          textDirection: TextDirection.rtl,
-          children: [
-            TextFormFieldAuth(
-              title: "الاسم الأول",
-              type: "First Name",
-              isLast: false,
-              size: MediaQuery.of(context).size.width / 2.2,
-            ),
-            TextFormFieldAuth(
-              title: "الاسم الأوسط",
-              type: "Second Name",
-              isLast: false,
-              size: MediaQuery.of(context).size.width / 2.2,
-            ),
-          ],
+        Text(
+          "ارشادات عامة خاصة بالمنصة و من يخالف هذه الشروط سيتم غلق حسابه",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: MyColors.myDeepGrey,
+          ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height / 80,
+          height: MediaQuery.of(context).size.height / 40,
         ),
-        TextFormFieldAuth(
-          title: "الاسم الأخير",
-          type: "Last Name",
-          isLast: false,
-          size: MediaQuery.of(context).size.width,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 80,
-        ),
-        TextFormFieldAuth(
-          title: "البريد الالكترونى",
-          type: "email",
-          isLast: false,
-          size: MediaQuery.of(context).size.width,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 80,
+        MasonryGridView.count(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          crossAxisCount: 1,
+          itemCount: 4,
+          itemBuilder: (context, index) {
+            return ConditionContainer(
+              index: index,
+              title: MyText.registerTexts[index][0],
+              subTitle: MyText.registerTexts[index][1],
+            );
+          },
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           textDirection: TextDirection.rtl,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            TextFormFieldAuth(
-              title: "كلمة المرور",
-              type: "pass",
-              isLast: false,
-              size: MediaQuery.of(context).size.width / 2.2,
+            Text(
+              "أنا أوافق على الشروط و الأحكام",
+              style: TextStyle(
+                fontSize: 16,
+              ),
             ),
-            TextFormFieldAuth(
-              title: "تأكيد كلمة المرور",
-              type: "pass",
-              isLast: false,
-              size: MediaQuery.of(context).size.width / 2.2,
-            ),
+            Checkbox(
+              value: false,
+              onChanged: (value) {},
+              shape: CircleBorder(),
+              activeColor: MyColors.myPurple,
+            )
           ],
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 80,
-        ),
-        TextFormFieldAuth(
-          title: "رقم الموبايل",
-          type: "phone",
-          isLast: false,
-          size: MediaQuery.of(context).size.width,
-        ),
+        )
       ],
     );
   }
