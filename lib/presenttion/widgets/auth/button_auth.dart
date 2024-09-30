@@ -6,10 +6,12 @@ class ButtonAuth extends StatelessWidget {
     super.key,
     this.onTap,
     required this.text,
+    required this.haveBorder,
   });
 
   final void Function()? onTap;
   final String text;
+  final bool haveBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,10 @@ class ButtonAuth extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: MediaQuery.of(context).size.height / 15,
-        width: MediaQuery.of(context).size.width / 2,
+        width: MediaQuery.of(context).size.width / 2.2,
         decoration: BoxDecoration(
-          color: MyColors.myPurple,
+          color: haveBorder ? Colors.white : MyColors.myPurple,
+          border: Border.all(color: MyColors.myPurple, width: 2),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
@@ -28,7 +31,7 @@ class ButtonAuth extends StatelessWidget {
             style: TextStyle(
               fontFamily: "title",
               fontSize: 25,
-              color: Colors.white,
+              color: haveBorder ? MyColors.myPurple : Colors.white,
             ),
           ),
         ),

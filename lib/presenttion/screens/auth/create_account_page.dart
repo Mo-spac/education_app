@@ -130,7 +130,20 @@ class CreateAccountPage extends StatelessWidget {
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 40,
                         ),
-                        ButtonAuth(text: "التالى"),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            if (index != 0)
+                              ButtonAuth(
+                                text: "السابق",
+                                haveBorder: true,
+                              ),
+                            ButtonAuth(
+                              text: (index == 3) ? "تسجيل" : "التالى",
+                              haveBorder: false,
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),

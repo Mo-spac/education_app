@@ -99,10 +99,12 @@ class _LoginPageState extends State<LoginPage> {
                           height: MediaQuery.of(context).size.height / 20,
                         ),
                         ButtonAuth(
-                            onTap: () {
-                              context.read<LoginCubit>().goToHome();
-                            },
-                            text: "الدخول"),
+                          onTap: () {
+                            context.read<LoginCubit>().goToHome();
+                          },
+                          text: "الدخول",
+                          haveBorder: false,
+                        ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 160,
                         ),
