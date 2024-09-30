@@ -1,10 +1,21 @@
 import 'package:education_app/constens/my_colors.dart';
 import 'package:education_app/presenttion/widgets/auth/button_auth.dart';
+import 'package:education_app/presenttion/widgets/auth/create_account/create_p1.dart';
+import 'package:education_app/presenttion/widgets/auth/create_account/create_p2.dart';
+import 'package:education_app/presenttion/widgets/auth/create_account/create_p3.dart';
+import 'package:education_app/presenttion/widgets/auth/create_account/create_p4.dart';
 import 'package:education_app/presenttion/widgets/auth/text_form_field_auth.dart';
 import 'package:flutter/material.dart';
 
 class CreateAccountPage extends StatelessWidget {
-  const CreateAccountPage({super.key});
+  CreateAccountPage({super.key});
+
+  List<Widget> createAccounttextFielde = [
+    CreateP1(),
+    CreateP2(),
+    CreateP3(),
+    CreateP4(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +73,7 @@ class CreateAccountPage extends StatelessWidget {
                           height: MediaQuery.of(context).size.height / 80,
                         ),
                         ///////////////////////////
+                        createAccounttextFielde[index],
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 40,
                         ),
