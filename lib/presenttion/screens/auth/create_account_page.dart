@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class CreateAccountPage extends StatelessWidget {
   CreateAccountPage({super.key});
 
-  List<Widget> createAccounttextFielde = [
+  List<Widget> createAccountTextFielde = [
     CreateP1(),
     CreateP2(),
     CreateP3(),
@@ -40,7 +40,7 @@ class CreateAccountPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 80,
+                height: MediaQuery.of(context).size.height / 40,
               ),
               Text(
                 "انشاء حسابي الخاص",
@@ -51,7 +51,7 @@ class CreateAccountPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 80,
+                height: MediaQuery.of(context).size.height / 40,
               ),
               Expanded(
                 child: PageView.builder(
@@ -59,7 +59,7 @@ class CreateAccountPage extends StatelessWidget {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height / 80,
+                          height: MediaQuery.of(context).size.height / 40,
                         ),
                         Text(
                           "الخطوة ${index + 1}",
@@ -70,10 +70,9 @@ class CreateAccountPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height / 80,
+                          height: MediaQuery.of(context).size.height / 40,
                         ),
-                        ///////////////////////////
-                        createAccounttextFielde[index],
+                        createAccountTextFielde[index],
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 40,
                         ),

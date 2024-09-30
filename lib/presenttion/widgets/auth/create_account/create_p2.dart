@@ -1,4 +1,4 @@
-import 'package:education_app/presenttion/widgets/auth/create_text_fields_page_auth.dart';
+import 'package:education_app/presenttion/widgets/auth/create_account/drop_down_auth.dart';
 import 'package:education_app/presenttion/widgets/auth/text_form_field_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -10,71 +10,66 @@ class CreateP2 extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           textDirection: TextDirection.rtl,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextFormFieldAuth(
-              title: "الاسم الأول",
-              type: "First Name",
-              isLast: false,
+            DropDownAuth(
+              title: "الصف الدراسي",
               size: MediaQuery.of(context).size.width / 2.2,
             ),
-            TextFormFieldAuth(
-              title: "الاسم الأوسط",
-              type: "Second Name",
-              isLast: false,
+            DropDownAuth(
+              title: "الشعبة",
               size: MediaQuery.of(context).size.width / 2.2,
             ),
           ],
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height / 80,
-        ),
-        TextFormFieldAuth(
-          title: "الاسم الأخير",
-          type: "Last Name",
-          isLast: false,
-          size: MediaQuery.of(context).size.width,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 80,
-        ),
-        TextFormFieldAuth(
-          title: "البريد الالكترونى",
-          type: "email",
-          isLast: false,
-          size: MediaQuery.of(context).size.width,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 80,
+          height: MediaQuery.of(context).size.height / 40,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           textDirection: TextDirection.rtl,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextFormFieldAuth(
-              title: "كلمة المرور",
-              type: "pass",
-              isLast: false,
+            DropDownAuth(
+              title: "المحافظة",
               size: MediaQuery.of(context).size.width / 2.2,
             ),
-            TextFormFieldAuth(
-              title: "تأكيد كلمة المرور",
-              type: "pass",
-              isLast: false,
+            DropDownAuth(
+              title: "المدينة/المنطقة",
               size: MediaQuery.of(context).size.width / 2.2,
             ),
           ],
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height / 80,
+          height: MediaQuery.of(context).size.height / 40,
         ),
         TextFormFieldAuth(
-          title: "رقم الموبايل",
-          type: "phone",
-          isLast: false,
+          title: "اسم المدرسة",
+          type: "school",
+          isLast: true,
           size: MediaQuery.of(context).size.width,
         ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height / 40,
+        ),
+        Row(
+          textDirection: TextDirection.rtl,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DropDownAuth(
+              title: "تاريخ الميلاد",
+              size: MediaQuery.of(context).size.width / 3.5,
+            ),
+            DropDownAuth(
+              title: "",
+              size: MediaQuery.of(context).size.width / 3.5,
+            ),
+            DropDownAuth(
+              title: "",
+              size: MediaQuery.of(context).size.width / 3.5,
+            ),
+          ],
+        )
       ],
     );
   }

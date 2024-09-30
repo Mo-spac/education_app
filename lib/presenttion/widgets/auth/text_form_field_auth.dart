@@ -2,16 +2,17 @@ import 'package:education_app/constens/my_colors.dart';
 import 'package:flutter/material.dart';
 
 class TextFormFieldAuth extends StatelessWidget {
-  const TextFormFieldAuth(
-      {super.key,
-      required this.title,
-      required this.type,
-      // required this.isPassword,
-      this.prefixIcon,
-      this.onTap,
-      this.flag,
-      required this.isLast,
-      required this.size});
+  const TextFormFieldAuth({
+    super.key,
+    required this.title,
+    required this.type,
+    // required this.isPassword,
+    this.prefixIcon,
+    this.onTap,
+    this.flag,
+    required this.isLast,
+    required this.size,
+  });
   final String title;
   // final bool isPassword;
   final String type;
