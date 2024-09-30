@@ -1,5 +1,7 @@
+import 'package:education_app/app_routes.dart';
 import 'package:education_app/business_logic/auth/login/cubit/login_cubit.dart';
 import 'package:education_app/constens/my_colors.dart';
+import 'package:education_app/presenttion/widgets/auth/button_auth.dart';
 import 'package:education_app/presenttion/widgets/auth/text_form_field_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,20 +63,22 @@ class _LoginPageState extends State<LoginPage> {
                           height: MediaQuery.of(context).size.height / 10,
                         ),
                         TextFormFieldAuth(
+                          size: MediaQuery.of(context).size.width,
                           title: "البريد الاكترونى",
-                          isPassword: false,
+                          type: "email",
                           isLast: false,
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 30,
                         ),
                         TextFormFieldAuth(
+                          size: MediaQuery.of(context).size.width,
                           flag: context.read<LoginCubit>().passFlag,
                           onTap: () {
                             context.read<LoginCubit>().showAndHide();
                           },
                           title: "كلمة السر",
-                          isPassword: true,
+                          type: "pass",
                           isLast: true,
                         ),
                         SizedBox(
@@ -94,41 +98,29 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 20,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            context.read<LoginCubit>().goToHome();
-                          },
-                          child: Container(
-                            height: MediaQuery.of(context).size.height / 15,
-                            width: MediaQuery.of(context).size.width / 2,
-                            decoration: BoxDecoration(
-                              color: MyColors.myPurple,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "الدخول",
-                                style: TextStyle(
-                                  fontFamily: "title",
-                                  fontSize: 25,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        ButtonAuth(
+                            onTap: () {
+                              context.read<LoginCubit>().goToHome();
+                            },
+                            text: "الدخول"),
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 160,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "انشاء حساب جديد",
-                              style: TextStyle(
-                                fontFamily: "title",
-                                fontSize: 18,
-                                color: MyColors.myDeepGrey,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed(AppRoutes.createAcountPage);
+                              },
+                              child: Text(
+                                "انشاء حساب جديد",
+                                style: TextStyle(
+                                  fontFamily: "title",
+                                  fontSize: 18,
+                                  color: MyColors.myDeepGrey,
+                                ),
                               ),
                             ),
                             Text(
