@@ -1,4 +1,5 @@
 import 'package:education_app/constens/my_colors.dart';
+import 'package:education_app/constens/validator_strings.dart';
 import 'package:flutter/material.dart';
 
 class TextFormFieldAuth extends StatelessWidget {
@@ -46,13 +47,7 @@ class TextFormFieldAuth extends StatelessWidget {
           ),
           TextFormField(
             validator: (value) {
-              if (value!.isEmpty) {
-                if (type == "pass") {
-                  return "الرجاء ادخال البريد الالكترونى";
-                } else {
-                  return "الرجاء ادخال كلمة المرور";
-                }
-              }
+              return validatorStrings(value.toString(), type, title);
             },
             textInputAction:
                 isLast ? TextInputAction.done : TextInputAction.next,
@@ -72,14 +67,16 @@ class TextFormFieldAuth extends StatelessWidget {
                       ),
                     )
                   : (type == "phone")
-                      ? Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "+20",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: MyColors.myPurple,
+                      ? SizedBox(
+                          width: MediaQuery.of(context).size.width / 7,
+                          child: Center(
+                            child: Text(
+                              "+20",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: MyColors.myPurple,
+                              ),
                             ),
                           ),
                         )

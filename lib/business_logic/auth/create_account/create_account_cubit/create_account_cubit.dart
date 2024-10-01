@@ -18,17 +18,33 @@ class CreateAccountCubit extends Cubit<CreateAccountState> {
     CreateP4(),
   ];
   PageController pageController = PageController();
+  GlobalKey<FormState> globalKey1 = GlobalKey<FormState>();
+  bool isHideCreatePass = true;
+  bool isHideCertainPass = true;
   void createAccountButtonNav(String type) {
     if (type == "next") {
-      pageController.nextPage(
-        duration: Duration(milliseconds: 50),
-        curve: Curves.ease,
-      );
+      var formState = globalKey1.currentState;
+      if (formState!.validate()) {
+        pageController.nextPage(
+          duration: Duration(milliseconds: 50),
+          curve: Curves.ease,
+        );
+      }
     } else {
       pageController.previousPage(
         duration: Duration(milliseconds: 50),
         curve: Curves.ease,
       );
+    }
+  }
+
+  void showAndHideCreateOrCertainPass(String type) {
+    if (type == "create") {
+      isHideCreatePass = !isHideCreatePass;
+      emit(CreateAccountUpdate(isHideCreatePass.toString()));
+    } else {
+      isHideCertainPass = !isHideCertainPass;
+      emit(CreateAccountUpdate(isHideCertainPass.toString()));
     }
   }
 }

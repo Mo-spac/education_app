@@ -8,5 +8,5 @@ final class CreateAccountInitial extends CreateAccountState {}
 final class CreateAccountUpdate extends CreateAccountState {
   final String id;
 
-  CreateAccountUpdate({required this.id});
+  CreateAccountUpdate(this.id);
 }
