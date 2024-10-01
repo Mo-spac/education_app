@@ -1,5 +1,5 @@
 import 'package:education_app/app_routes.dart';
-import 'package:education_app/business_logic/auth/login/cubit/login_cubit.dart';
+import 'package:education_app/business_logic/auth/login/login_cubit/login_cubit.dart';
 import 'package:education_app/constens/my_colors.dart';
 import 'package:education_app/presenttion/widgets/auth/button_auth.dart';
 import 'package:education_app/presenttion/widgets/auth/text_form_field_auth.dart';
